@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputType>Html</OutputType>
+    <DocToolExtensionsPath Condition=" '$(DocToolExtensionsPath)' == '' ">
+    </DocToolExtensionsPath>
+    <AssemblyName>DocProject</AssemblyName>
+    <Name>DocProject</Name>
+    <RootNamespace>DocProject</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'PublishDoc' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\PublishDoc</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="css" />
+    <Folder Include="Docs\" />
+    <Folder Include="Docs\CodeAnalysis\" />
+    <Folder Include="script" />
+    <Content Include="Docs\CodeAnalysis\AdditionalText.md">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="script\default.js">
+    </Content>
+    <Content Include="script\jquery-2.1.0.min.js">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compilers\Core\Portable\CodeAnalysis.csproj">
+      <Name>CodeAnalysis</Name>
+      <Project>{1ee8cad3-55f9-4d91-96b2-084641da9a6c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(DocToolExtensionsPath)\Targets\Microsoft.DocProject.targets" />
+</Project>
